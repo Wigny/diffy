@@ -166,8 +166,11 @@ class ApiController(
   }
 
   @GetMapping(path = Array("/api/1/clear"))
-  def clear() = {
-//    proxy.clear()
+  def clear(
+    @RequestParam(name = "start", defaultValue = "0") start: Long,
+    @RequestParam(name = "end", defaultValue = "1701001001000") end: Long
+  ) = {
+    proxy(start, end).differenceAnalyzer.clear()
     Renderer.success("Diffs cleared")
   }
 
@@ -184,5 +187,3 @@ class ApiController(
 
   private[this] def httpServiceToMap(target: String) = Map("target" -> target)
 }
-
-
