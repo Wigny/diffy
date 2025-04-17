@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface DifferenceResultRepository extends MongoRepository<DifferenceResult, String>{
     List<DifferenceResult> findByTimestampMsecBetween(Long start, Long end);
+    List<DifferenceResult> deleteByTimestampMsecBetween(Long start, Long end);
 }

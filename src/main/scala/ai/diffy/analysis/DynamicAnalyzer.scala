@@ -43,4 +43,8 @@ class DynamicAnalyzer(repository: DifferenceResultRepository) {
     })
     Report(analyzer, joinedDifferences, collector, start, end)
   }
+
+  def delete(start: Long, end: Long): Unit = {
+    repository.deleteByTimestampMsecBetween(start, end)
+  }
 }

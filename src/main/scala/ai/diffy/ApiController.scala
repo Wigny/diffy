@@ -166,11 +166,8 @@ class ApiController(
   }
 
   @GetMapping(path = Array("/api/1/clear"))
-  def clear(
-    @RequestParam(name = "start", defaultValue = "0") start: Long,
-    @RequestParam(name = "end", defaultValue = "1701001001000") end: Long
-  ) = {
-    proxy(start, end).differenceAnalyzer.clear()
+  def clear() = {
+    dynamicAnalyzer.delete(0, new Date().getTime)
     Renderer.success("Diffs cleared")
   }
 
